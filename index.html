@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monotree</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1>Monotree</h1>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Welcome to Monotree</h2>
+      <p>Building modern and responsive web experiences</p>
+      <button class="btn">Get Started</button>
+    </div>
+  </section>
+
+  <!-- Carousel -->
+  <div class="carousel">
+    <div class="slides">
+      <img src="images/slide1.jpg" alt="Slide 1" class="active">
+      <img src="images/slide2.jpg" alt="Slide 2">
+      <img src="images/slide3.jpg" alt="Slide 3">
+    </div>
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+  </div>
+
+  <!-- Products Section -->
+  <section class="products">
+    <h2>Our Products</h2>
+    <div class="grid">
+      <div class="card">Product 1</div>
+      <div class="card">Product 2</div>
+      <div class="card">Product 3</div>
+      <div class="card">Product 4</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Monotree. All rights reserved.</p>
+  </footer>
+
+  <!-- Carousel Script -->
+  <script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slides img");
+    const prevBtn = document.querySelector(".prev");
+    const nextBtn = document.querySelector(".next");
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+        if (i === index) {
+          slide.classList.add("active");
+        }
+      });
+    }
+
+    function nextSlide() {
+      slideIndex = (slideIndex + 1) % slides.length;
+      showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+      slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+      showSlide(slideIndex);
+    }
+
+    // Button clicks
+    nextBtn.addEventListener("click", nextSlide);
+    prevBtn.addEventListener("click", prevSlide);
+
+    // Auto slide every 5s
+    setInterval(nextSlide, 5000);
+
+    // Show first slide on load
+    showSlide(slideIndex);
+  </script>
+
+</body>
+</html>
